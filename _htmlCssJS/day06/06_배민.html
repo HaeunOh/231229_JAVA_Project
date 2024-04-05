@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Kirang+Haerang&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        @font-face {
+                font-family: Yeon_Sung;
+                src: url(../font/Yeon_Sung/YeonSung-Regular.ttf);
+            }
+        @font-face {
+            font-family: bmdohyeon;
+            src: url(../font/BMDOHYEON_ttf.ttf);
+        }
+       
+        body {
+            background-color: rgb(42, 193, 188);
+        }
+
+        @keyframes move {
+            0% {
+                left: 10%;
+            }
+
+            100% {
+                left: 44%;
+                box-shadow: 5px 5px 40px white;
+                opacity: 100%;
+            }
+        }
+
+        .cartimg {
+            position: absolute;
+            animation: move 2.5s infinite;
+            top: 10px;
+            left: 44%;
+            transform: translate(0, 0, 100px);
+            border-radius: 40px;
+            opacity: 0%;
+
+        }
+
+        .menu {
+            width: 300px;
+            height: 420px;
+            background-color: white;
+            border-radius: 15px;
+            margin: 50px auto 0px;
+            box-shadow: 3px 3px 3px rgb(29, 111, 103);
+        }
+
+        header {
+            margin-top: 200px;
+            text-align: center;
+
+        }
+        header>h1 {
+            font-family: bmdohyeon;
+            color: white;
+            font-size: 90px;
+            font-weight: 500;
+            text-shadow: 2px 2px 2px rgb(200, 200, 200);
+            margin-top: 15px;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgb(38, 179, 174);
+        }
+
+        header>h3 {
+            font-family:  "Kirang Haerang", system-ui, sans-serif;
+            color: white;
+            font-size: 50px;
+            font-weight: 50;
+            text-shadow: 2px 2px 2px rgb(200, 200, 200);
+            margin-top: 15px;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: rgb(38, 179, 174);
+        }
+
+        .txt {
+            text-align: center;
+        }
+
+        .sushi {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .txt {
+            margin-top: 10px;
+            font-family: yeon_sung;
+            font-size: 20px;
+        }
+
+        .pay-btn {
+            font-family: yeon_sung;
+            background-color: rgba(42, 193, 188, 0.631);
+            border-radius: 10px;
+            border: none;
+            font-weight: 50;
+            box-shadow: 2px 2px 2px rgb(29, 111, 103);
+
+        }
+
+        .pay-btn:hover {
+            box-shadow: -2px -2px 2px rgb(29, 111, 103);
+        }
+
+        .topbtn {
+            position: fixed;
+            right: 2%;
+            bottom: 10px;
+            border: 1px solid rgb(38, 179, 174);
+            border-radius: 40px;
+            background-color: rgb(43, 203, 198);
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            color: black;
+            box-shadow: 3px 3px 3px rgb(29, 111, 103);
+            text-decoration: none;
+            font-family: "Black Han Sans", sans-serif;
+            font-size: smaller;
+            opacity: 80%;
+
+        }
+
+        .bi-triangle-fill {
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 박스 가로 300px -->
+    <!-- <div class="bg">
+        <div class="text1">배달의 민족</div>
+        <div class="text2">넌 배달할 때가 제일 멋있어</div>
+        <div class="card1">
+            /div>
+    </div> -->
+    <div><img id="top" src="../image/배민.jpeg" class="cartimg" width="150px" height="150px" alt=""></div>
+    <header>
+        <h1>배달의 민족</h1>
+        <h3>"넌 배달할 때가 제일 멋있어."</h3>
+    </header>
+    <!-- 여기서부터 메뉴 -->
+    <div class="menu">
+        <div class="image1"><img src="../image/초밥.jpeg" class="sushi" width="300px" height="200px" alt=""></div>
+        <div class="txt">
+            <h3>맛있는 초밥</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 <br>착한 가격</p>
+            <p><del>25,000</del> ➔ 15,000원</p>
+            <button type="button" class="pay-btn">바로결제</button>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image1"><img src="../image/엽떡.png" class="sushi" width="300px" height="200px" alt=""></div>
+        <div class="txt">
+            <h3>엽기떡볶이</h3>
+            <p>스트레스 많이 받은 날에 생각나는<br>국민 떡볶이</p>
+            <p><del>14,000</del> ➔ 12,900원</p>
+            <button type="button" class="pay-btn">바로결제</button>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image1"><img src="../image/초밥.jpeg" class="sushi" width="300px" height="200px" alt=""></div>
+        <div class="txt">
+            <h3>맛있는 초밥</h3>
+            <p>주머니가 가벼운 당신의 마음까지 생각한 <br>착한 가격</p>
+            <p><del>25,000</del> ➔ 15,000원</p>
+            <button type="button" class="pay-btn">바로결제</button>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image1"><img src="../image/짜장면.jpeg" class="sushi" width="300px" height="200px" alt=""></div>
+        <div class="txt">
+            <h3>짜장면</h3>
+            <p>힘들게 일하고 돌아온 날 <br>곱빼기로 마음을 달래봐요</p>
+            <p><del>7,000</del> ➔ 6,500원</p>
+            <button type="button" class="pay-btn">바로결제</button>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="image1"><img src="../image/햄버거.jpeg" class="sushi" width="300px" height="200px" alt=""></div>
+        <div class="txt">
+            <h3>햄버거 세트</h3>
+            <p>감자튀김 콜라 없인 못살아 <br>파격 세트 구성!!</p>
+            <p><del>12,500</del> ➔ 9,000원</p>
+            <button type="button" class="pay-btn">바로결제</button>
+        </div>
+    </div>
+    <a href="#top" id="bottom" class="topbtn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767z" />
+        </svg></a>
+</body>
+
+</html>

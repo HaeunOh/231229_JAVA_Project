@@ -1,0 +1,276 @@
+@font-face {
+    font-family: nanum;
+    src: url(../font/NanumGothic-Regular.ttf);
+}
+@font-face {
+    font-family: nanum2;
+    src: url(../font/NanumGothic-ExtraBold.ttf);
+}
+@font-face {
+    font-family: nnsqneo;
+    src: url(../font/NanumSquareNeo-bRg.ttf);
+}
+@font-face {
+    font-family: nnsqneobd;
+    src: url(../font/NanumSquareNeo-cBd.ttf);
+}
+body{
+    font-family: nanum;
+    min-width: 1500px;
+    background-color: white;
+}
+header{
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    height: 120px;
+    background-color: white;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+header>.logo{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+header>.menu1{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 160px;
+    box-sizing: border-box;
+    
+}
+header>.menu1>li{
+    margin: 50px 30px 20px;
+    font-size: 16px;
+}
+header>.menu1>li>a{
+    color: black;
+}
+header>.menu2{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-left: 150px;
+}
+header>.menu2>li{
+    margin: 10px 1px 50px; 
+    padding-right: 40px;
+    color: gainsboro;
+}
+header>.menu2>li>a{
+    font-size: 14px;
+    color: gray;
+    word-spacing: 1px;
+}
+section{
+    width: 100%;
+    height: 700px;
+    background-image: url(../day09/img/mainimg.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+main>.con1{
+	width: 100%;
+    height: 70px;
+    position: relative;
+    
+}
+main>.con1>.time{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    line-height: 70px;
+    text-align: center;
+    font-family: nnsqneo;
+    float: left;
+    word-spacing: 30px;
+    font-size: 25px;
+   
+    
+}
+ main>.con1>.time>.clock{
+    margin-right: 30px;
+ }
+
+main>.con2{
+    width: 100%;
+    height: 1000px;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)),url(../day09/img/introCon_img1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* display: flex;
+    justify-content: space-around; */
+
+}
+main>.con2>.textbox1{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+main>.con2>.textbox1>h1{
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-family: nnsqneo;
+}
+main>.con2>.textbox1>h2{
+    font-size: 20px;
+    font-weight: 200;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    color: white;
+    padding-top: 20px;
+    font-family: nnsqneo;
+}
+main>.con2>.outbox{
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 auto 0;
+    
+}
+main>.con2>.outbox>.box1{
+    width: 600px;
+    height: 500px;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+main>.con2>.outbox>.box1:hover{
+    border: 2px solid white;
+}
+main>.con2>.outbox>.box1>h2{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 15px;
+    font-family: nnsqneobd;
+    
+}
+main>.con2>.outbox>.box2{
+    width: 600px;
+    height: 500px;
+    transition: 0.3s;
+    border: 2px solid rgba(255, 255, 255, 0);
+
+}
+main>.con2>.outbox>.box2:hover{
+    border: 2px solid white;
+}
+main>.con2>.outbox>.box2>h2{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 15px;
+    font-family: nnsqneobd;
+   
+}
+main>.con3{
+    width: 100%;
+    height: 1000px;
+    background-image: url(../day09/img/mainCon2_bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+main>.con3>.textbox2{
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+main>.con3>.textbox2>h1{
+    font-size: 50px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    color: black;
+    font-family: nnsqneo;
+}
+main>.con3>.textbox2>h2{
+    font-size: 20px;
+    font-weight: 200;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    color: black;
+    padding-top: 20px;
+    font-family: nnsqneo;
+    
+}
+main>.con3>.outbox{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 auto 0; 
+}
+main>.con3>.outbox>.box1{
+    width: 400px;
+    height: 410px;
+    background-color: white;
+    transition: 0.5s;
+}
+main>.con3>.outbox>.box1:hover{
+    background-color: rgb(50, 162, 95);
+}
+main>.con3>.outbox>.box1>h2{
+  font-size: 20px;
+  text-align: center;
+  line-height: 110px;
+  transition: 0.5s;
+  font-family: nnsqneobd;
+}
+main>.con3>.outbox>.box1>h2:hover{
+    color: white;
+}
+main>.con3>.outbox>.box2{
+    width: 400px;
+    height: 410px;
+    background-color: white;
+    transition: 0.5s;
+}
+main>.con3>.outbox>.box2:hover{
+    background-color: rgb(50, 162, 95);
+}
+main>.con3>.outbox>.box2>h2:hover{
+    color: white;
+}
+
+main>.con3>.outbox>.box2>h2{
+    font-size: 20px;
+    text-align: center;
+    line-height: 110px;
+    transition: 0.5s;
+    font-family: nnsqneobd;
+  }
+main>.con3>.outbox>.box3{
+    width: 400px;
+    height: 410px;
+    background-color: white;
+    transition: 0.5s;
+}
+main>.con3>.outbox>.box3:hover{
+    background-color: rgb(50, 162, 95);
+}
+main>.con3>.outbox>.box3>h2{
+    font-size: 20px;
+    text-align: center;
+    line-height: 110px;
+    transition: 0.5s;
+    font-family: nnsqneobd;
+}
+main>.con3>.outbox>.box3>h2:hover{
+    color: white;
+}
+
+

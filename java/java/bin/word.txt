@@ -1,0 +1,7 @@
+apple:사과
+world:세계
+green:초록색
+screen:화면
+zoo:동물원
+human:사람
+cup:컵

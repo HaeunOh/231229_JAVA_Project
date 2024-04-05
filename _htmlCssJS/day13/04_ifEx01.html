@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>오늘은?</h1>
+    <button type="button" id="btn">Today</button>
+    <h3 id="result"></h3>
+        <!-- 오늘 날짜와 요일 출력 -->
+        <!-- 2024. 03. 19. (화)-->
+
+        <script>
+        document.getElementById('btn').addEventListener('click', ()=>{
+                    //날짜불러오기
+                    let date = new Date();
+                    let today = date.toLocaleDateString();
+                    //요일불러오기
+                    //day값은 0~6 숫자로 출력되므로 yoil이라는 빈 변수 선언 후 
+                    //switch~case문을 통해 요일 이름 부여하기
+                    let day = date.getDay();
+                    let yoil = null;
+                        switch(day){
+                        case 0 : yoil='일'; break;
+                        case 1 : yoil='월'; break;
+                        case 2 : yoil='화'; break;
+                        case 3 : yoil='수'; break;
+                        case 4 : yoil='목'; break;
+                        case 5 : yoil='금'; break;
+                        case 6 : yoil='토'; break;
+                        default: yoil='잘못된';
+                    }
+            let printResult = document.getElementById('result');
+            printResult.innerText = `${today} ${yoil}요일`;
+        })
+        </script>
+</body>
+</html>

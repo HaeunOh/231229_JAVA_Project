@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id="printArea"></h3>
+    <script>
+        const memberObject = {
+            name : 'hong',
+            age : 30,
+            married : true,
+            favors : ['baseball', 'Game', 'Movie', 'etc...']
+        };
+        const people = [];
+        //people에 memberObject를 5명 복사하여 추가
+
+        for(let i=0; i<5; i++){
+            people.push(memberObject);
+        }
+        console.log(people);
+        //people에 있는 1번지 이름을 바꾸기
+        people[1].name = 'kim';
+        console.log(people);
+        people[2].age = 20;
+        console.log(people);
+
+        //객체에서 값을 빼서 console에 찍기
+        //배열 순회 : for / forEach
+        //for of -> array의 내용을 탐색 / for in -> object의 내용을 탐색
+        //people 배열 안에 memberobject 객체 안에 favors 배열이 있으므로
+        let printArea = document.getElementById('printArea');
+        for(let member of people){
+            for(let keyName in member){
+                if(keyName!='favors'){
+                    printArea.innerText += keyName;
+                    printArea.innerText += member[keyName];
+                }else{
+                    for(let fa of member[keyName]){
+                        printArea.innerText += fa;
+                    }
+                 }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        상하좌우 값이 있을 경우
+        - margin: 10px => 상하좌우 전체 여백 10px
+        - margin: 10px 20px => 상하 10px 좌우 20px 여백 주기
+        - margin : 10px 20px 30px => 상 10px 좌우 20px 하 30px
+        - margin : 10px 20px 30px 40px => 상 10px 우 20px 하 30px 좌 40px 
+        ================ > > > 시계방향으로 돌아가는 순서
+     -->
+    <style>
+        div>div{
+            box-sizing: border-box;
+            float: left;
+            width: 100px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            font-weight: 900;
+            margin-left: 12px;
+            box-shadow: 10px 10px 10px gray;
+            border-radius: 35px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 40px;
+            /* 텍스트 외곽선 & 외곽선 색상 */
+            -webkit-text-stroke-width: 1px ;
+            -webkit-text-stroke-color: black;
+            
+        
+        }
+        
+        
+        div>div:hover{
+            /* 내가 나를 기준으로 옮기는 것이므로 relative가 내가 되고 absolute를 생략하게됨 */
+            position: relative;
+           top: 10px;
+           left: 10px;
+           /* transform: translate(10px, 10px); */
+           cursor: pointer;
+          
+            
+        }
+        div::after{
+            content: "";
+            clear: both;
+            display: block;
+            
+        }
+       .a{
+            background-color: rgb(255, 105, 105);
+       }
+       .b{
+             background-color: rgb(255, 202, 105);
+       }
+       .c{
+        background-color: rgb(255, 255, 122);
+       }
+       .d{
+        background-color: rgb(204, 255, 128);
+       }
+       .e{
+        background-color: rgb(107, 163, 255);
+       }
+       .f{
+        background-color: rgb(180, 99, 255);
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="a">T</div>
+        <div class="b">H</div>
+        <div class="c">A</div>
+        <div class="d">N</div>
+        <div class="e">K</div>
+        <div class="f">S</div>
+    </div>
+</body>
+</html>

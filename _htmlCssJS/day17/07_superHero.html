@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(../image/space.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+         @font-face {
+            font-family: dotGothic;
+            src: url(../font/DotGothic16-Regular.ttf);
+        }
+        header{
+            color: white;
+            text-align: center;
+            font-size: 50px;
+        }
+        section{
+            text-align: center;
+        }
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        h1{ 
+            font-family: dotGothic;
+            height: 250px;
+            margin-bottom: 0;
+            text-align: center;
+            line-height: 250px;
+
+        }
+        .ht{
+            font-family: dotGothic;
+            font-size: 25px;
+            height: 100px;
+            margin: 0;
+            text-align: center;
+            line-height: 100px;
+        }
+        section article{
+            color: white;
+            font-family: dotGothic;
+            width: calc(100%/3);
+            float: left;
+            text-align: center;
+        }
+        .name{
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <header></header>
+    <section></section>
+     <script>
+         fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+             .then(resp => resp.json()
+             .then(result => hero(result)));
+        
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+
+        function hero(jsonObj){
+            console.log(jsonObj);
+            //headedr에 넣을 str
+            let str = '';
+            str += `<h1>${jsonObj.squadName}</h1>`;
+            str += `<p class="ht">Hometown: ${jsonObj.homeTown}  //  Formed: ${jsonObj.formed} </p>`
+            header.innerHTML = str;
+
+            //section에 넣을 hero information
+            let heroInfo = '';
+            for(const member of jsonObj.members){
+                heroInfo += `<article>`;
+                heroInfo += `<h3 class="name">${member.name}</h3>`;
+                heroInfo += `<p>SecretIdentity: ${member.secretIdentity}</p>`;
+                heroInfo += `<p>Age: ${member.age}</p>`;
+                heroInfo += `<ul>SuperPowers: `;
+                    for(const power of member.powers){
+                        heroInfo += `<li>${power}</li>`;
+                    }
+                    heroInfo += `</ul></article>`;
+                section.innerHTML = heroInfo;
+            }
+        }
+
+        
+
+         
+     </script>
+</body>
+</html>

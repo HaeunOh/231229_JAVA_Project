@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wapper{
+            width: 75%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+            text-align: center;
+            background-color: rgb(142, 201, 238);
+        }
+        .userInput{
+            margin-bottom: 30px;
+            border: none;
+            outline: none;
+            border-radius: 4px;
+        
+        }
+        .addBtn{
+            background-color:rgb(142, 201, 238);
+            border: none;
+            box-shadow: 1px 2px 3px rgb(85, 128, 155);
+            border-radius: 4px;
+        }
+        .delBtn{
+            margin-left: 100px;
+        }
+        .todoItem:checked + label{
+            text-decoration: line-through;
+        }
+
+        .memo {
+            background-color: #fffae6; 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wapper">
+        <h2>여행 준비물 점검 목록</h2>
+        <h3 id="alert"></h3>
+        <form action="">
+            <input type="text" id="item" autofocus="true" class="userInput">
+            <button type="button" id="add" class="addBtn">추가</button>
+        </form>
+        <span id="itemList"></span>
+    </div>
+    <script>
+        const input = document.querySelector('#item');
+        const itemList = [];
+        let str = '';
+        let item = ''; 
+        let showList = document.getElementById('itemList');
+        let alertArea = document.getElementById('alert');
+        
+        document.getElementById('add').addEventListener('click', ()=>{
+            addItem();
+        })
+
+        function addItem() {
+            if(input.value !== ''){
+                alertArea.innerText = '';
+                item = document.getElementById('item').value;
+                itemList.push(item);
+                renderList(); // 항목 추가 후 리스트 갱신
+                input.value = '';
+                input.focus();
+            } else {
+                alertArea.innerText = '내용을 입력하세요!';
+            }   
+        }
+
+        function delList(index){
+            itemList.splice(index, 1); // 배열에서 해당 인덱스의 요소 제거
+            renderList(); // 리스트를 다시 렌더링하여 갱신
+        }
+
+        function renderList(){
+            str = ''; // str 초기화
+            for(let i=0; i<itemList.length; i++){
+                str += `<div class="memo">`;
+                str += `<input type="checkbox" class="todoItem"><label>${itemList[i]}</label>`;
+                str += `<button type="button" class="delBtn" onclick="delList(${i})">X</button><br>`;
+                str += `</div><br>`;
+            }
+            showList.innerHTML = str; // 리스트 갱신
+        }
+    </script>
+</body>
+</html>

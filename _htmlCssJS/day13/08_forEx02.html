@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>향상된 for문</h1>
+    <ul>
+        <li>
+            for of : 배열 안의 내용을 탐색할 때 사용 []
+            for(let value of Array){
+                code;
+            }
+        </li>
+        <li>
+            for in : 객체 안의 내용을 탐색할 때 사용 {}
+            for(let value in Object){
+                <!-- value = key -->
+                code;
+            }
+        </li>
+    </ul>
+    <h3> 약수 출력하기 <br>
+         (1~100까지 입력한 숫자의 약수를 출력) </h3>
+         <input type="text" id="num">
+         <button type="button" id="go">약수 출력</button>
+         <h3 id="result">
+            약수 값 출력 / 개수 <br>
+         </h3>
+
+         <script>
+             let result = document.getElementById('result');
+             let result2 = result.innerHTML;
+            document.getElementById('go').addEventListener('click', ()=>{
+                check();
+                let num = document.getElementById('num').value;
+                console.log(result2);
+                let mNum = 1;
+                let cnt = 0;
+                result.innerHTML = result2;
+                for(mNum=1; mNum<=num; mNum++){
+                    if(num%mNum==0){
+                        result.innerHTML+=` ${mNum} `;
+                        cnt++;
+                    }
+                }
+                result.innerHTML += `<br> 총 ${cnt}개 <br>`;
+            })
+
+            function check(num){
+                let num2 = document.getElementById('num').value;
+                if(num2<0 || num2>100){
+                    alert('0~100 사이의 숫자를 입력하세요!');
+                    location.reload();
+                }
+            }
+         </script>
+</body>
+</html>

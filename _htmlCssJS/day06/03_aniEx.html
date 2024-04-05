@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes scaleBox {
+            from{
+                left: 10%;
+                background-color: purple;
+            }
+            50%{
+               left: 80%;
+               background-color: rgb(255, 192, 243);
+            }
+            to{
+                left: 10%;
+                background-color: purple;
+            }
+
+        }
+        .box{
+            margin-left: 50px;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 10%;
+            top: 10px;
+            background-color: purple;
+            animation-name: scaleBox;
+            animation-duration: 3s;
+            animation-iteration-count: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

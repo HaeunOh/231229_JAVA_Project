@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        input에 파일명.확장자 형태로 입력하여 전송 버튼을 클릭하면
+        이미지 파일인지 아닌지 검사 후
+        이미지 파일이면 '정상파일입니다.' => (green)
+        이미지 파일이 아니면 '이미지 파일만 가능합니다' => (red)
+        로 출력하는 구조
+     -->
+     <!-- 
+        jpg, png, gif, jpeg (대소문자 상관 X)
+        위 네 가지만 이미지 파일로 값 인정
+      -->
+      <fieldset>
+        <legend>이미지 파일 검사</legend>
+        <input type="text" id="fileName">
+        <button type="button" id="btn">전송</button>
+      </fieldset>
+      <h3 id="result"></h3>
+      <script>
+        //Validtion 
+          let yn = 0;
+          let imgTrue = `<span class="green">정상파일입니다.</span>`;
+          let imgFalse = `<span class="red">이미지 파일만 가능합니다.</span>`;
+          let result = document.getElementById('result');
+        document.getElementById('btn').addEventListener('click', ()=>{
+            let fileName = document.getElementById('fileName').value;
+            if(fileName.match(/(jpg|jpeg|gif|png)/i)){
+                yn=1;
+            }else{
+                yn=2;
+            }
+            color();
+        })
+        function color(){
+            if(yn==1){
+                result.innerHTML = imgTrue;
+            }else{
+                result.innerHTML = imgFalse;
+            }
+        }
+      </script>
+</body>
+</html>

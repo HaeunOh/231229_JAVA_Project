@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: dotGothic;
+            src: url(../font/DotGothic16-Regular.ttf);
+        }
+        button{
+            background-color: rgb(245, 147, 185);
+            font-family: dotGothic;
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 25px;
+            border-radius: .75em;
+            box-shadow: 1px 3px 15px -8px rgba(0,0,0,0.5);
+            border: 3px solid rgba(240,240,240,.75);
+        }
+        button:hover{
+            cursor: pointer;
+            box-shadow: 2px 2px 4px ghostwhite ;
+        }
+        .carcArea{
+            margin-top: 50px;
+            margin-left: 100px;
+            padding-left: 35px;
+            padding-bottom: 30px;
+            padding-top: 10px;
+            width: 360px;
+            height: 500px;
+            background-color: rgb(249, 199, 240);
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px rgb(44, 39, 24);
+            box-sizing: border-box;
+        }
+        .carcArea>.ac{
+            margin-left: 30px;
+            width: 70%;
+            height: 60px;
+            background-color: rgb(212, 100, 169);
+        }
+        .carcArea>.result{
+            margin-top: 10px;
+            margin-left: 15px;
+            margin-bottom: 20px;
+            font-family: dotGothic;
+            background-color: gray;
+            width: 80%;
+            height: 100px;
+            font-size: 3em;
+            border-radius: 15px;
+            box-shadow: inset 2px 2px 3px 0px rgba(19, 19, 19, 0.727);
+            text-align: right;
+            line-height: 100px;
+            padding-right: 10px;
+            box-sizing: border-box;
+        }
+        .carcArea>.oper{
+            background-color: rgb(182, 134, 196);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carcArea">
+            <div class="result" id="printResult"></div>
+            <button type="button" onclick="input('7')">7</button>
+            <button type="button" onclick="input('8')">8</button>
+            <button type="button" onclick="input('9')">9</button>
+            <button type="button" class="oper" onclick="input('+')">+</button> <br>
+            <button type="button" onclick="input('4')">4</button> 
+            <button type="button" onclick="input('5')">5</button>
+            <button type="button" onclick="input('6')">6</button> 
+            <button type="button" class="oper" onclick="input('-')">-</button> <br>
+            <button type="button" onclick="input('1')">1</button> 
+            <button type="button" onclick="input('2')">2</button>
+            <button type="button" onclick="input('3')">3</button>
+            <button type="button" class="oper" onclick="input('*')">*</button> <br>
+            <button type="button" onclick="input('.')">.</button> 
+            <button type="button" onclick="input('0')">0</button>
+            <button type="button" onclick="calc()">=</button>
+            <button type="button" class="oper" onclick="input('/')">/</button>
+            <button type="button" class="ac" value="C" onclick="location.reload()">C</button>  
+        </div>
+    </div>
+    <script>
+        let o = ''; //연산자 변수
+        let inputString = ''; //value로 입력받은 계산식 문자열
+        let displayValue = ''; //화면에 입력된 문자열
+        const printResult = document.getElementById('printResult'); //결과출력 공간
+        let result = ''; //결과출력문
+            
+        function input(value){
+            inputString += value; //입력받은 value값 저장
+            displayValue += value; 
+            document.querySelector('.container').value = displayValue; 
+
+            //입력받은 value값이 +,*,=,/ 넷 중 하나라면 연산자 'o' 로 저장
+            if(value == '+' || value == '-' || value == '*' || value == '/' ){
+                o = value; 
+            }
+            printResult.innerText += value;
+        } 
+        function calc(){  //'='을 눌렀을 때 function
+            let cal = inputString.split(o); //inputString에 저장된 문자열을 연산자 기준으로 분리
+            let n1 = Number(cal[0]); //연산자 기준 앞
+            let n2 = Number(cal[1]); //연산자 기준 뒤
+            let total = 0; //계산결과
+            switch(o){
+                case '+' : total = n1+n2; break;
+                case '-' : total = n1-n2; break;
+                case '*' : total = n1*n2; break;
+                case '/' : total = n1/n2; break;
+                default : break;
+            }
+            result = total;
+            printResult.innerText = result;
+        }
+        
+    </script>
+</body>
+</html>

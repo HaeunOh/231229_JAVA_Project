@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(reset.css);
+        .container{
+            width: 100%;
+            /* vh/vw : 모니터(브라우저 기준) 높이 */
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)),url(../image/wallpapers3.jpeg);
+            background-size: cover;
+        }
+        .container>.navbar{
+            width: 90%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .container>.navbar>h1>a{
+            color: white;
+            font-size: 25px;
+            font-weight: 700;
+        }
+        .container>.navbar>ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container>.navbar>ul>li{
+            margin: 0 10px;
+        }
+        .container>.navbar>ul>li>a{
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .container>.navbar>ul>li>a:hover{
+            color: skyblue;
+        }
+        .container>.main{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+        .container>.main>h2{
+            font-size: 80px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .container>.main button{
+            border: none;
+            font-size: 20px;
+            padding: 10px 20px;
+            font-weight: 200;
+            color: white;
+            border-radius: 10px;
+            background-color: rgb(82, 136, 161);
+            transition: 0.5s;
+        }
+        .container>.main button:hover{
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.507);
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <h1><a href="">DESIGN</a></h1>
+            <ul>
+                <li><a href="">HOME</a></li>
+                <li><a href="">LOGIN</a></li>
+                <li><a href="">SIGNUP</a></li>
+                <li><a href="">BOARD</a></li>
+            </ul>
+        </div>
+        <div class="main">
+
+            <h2>Welcome to Front-End World</h2>
+            <a href=""><button>Learn More</button></a>
+        </div>
+       
+    </div>
+</body>
+</html>

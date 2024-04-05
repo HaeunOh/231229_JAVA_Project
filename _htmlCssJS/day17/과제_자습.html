@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .todoItem {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.todoItem button {
+    margin-left: 5px;
+}
+    </style>
+</head>
+<body>
+    <div id="todoList">
+    </div>
+    <script>
+        let todos = [];
+
+function renderTodos() {
+    const todoList = document.getElementById('todoList');
+    todoList.innerHTML = '';
+
+    todos.forEach((todo, index) => {
+        const todoItem = document.createElement('div');
+        todoItem.classList.add('todoItem');
+        todoItem.innerHTML = todo;
+        
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'x';
+        deleteButton.addEventListener('click', () => {
+            deleteTodo(index);
+        });
+
+        todoItem.appendChild(deleteButton);
+        todoList.appendChild(todoItem);
+    });
+}
+
+function deleteTodo(index) {
+    todos.splice(index, 1);
+    renderTodos();
+}
+
+// 테스트용으로 몇 가지 ToDo 항목을 추가합니다.
+todos.push('Task 1');
+todos.push('Task 2');
+todos.push('Task 3');
+
+// 초기 ToDo 항목을 렌더링합니다.
+renderTodos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .ul{
+        list-style: none;
+    }
+    h3{
+        margin-left: 50px;
+    }
+
+    body{
+            min-width: 680px;
+        }
+        legend{
+            background-color: rgb(110, 96, 79);
+            border-radius: 10px;
+            color: white;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+        }
+        fieldset{
+            width: 30%;
+            text-align: center;
+            background-color: rgb(110, 96, 79);
+            color: white;
+            border-radius: 10px;
+            border: none;
+        }
+        fieldset>input{
+            border-radius: 10px;
+        }
+        fieldset>button{
+            margin-top: 10px;
+            color: white;
+            background-color: rgba(246, 182, 103, 0.797);
+            border: none;
+            box-shadow: 2px 2px 2px rgb(45, 38, 24);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름  <input type="text" id="name"><br>
+            국어  <input type="text" id="kor"><br>
+            영어  <input type="text" id="eng"><br>
+            수학  <input type="text" id="math"><br>
+            <button type="button" onclick="scoreCarc()">성적계산</button>
+        </fieldset>
+     </form>
+     <ul id="result1" class="ul"></ul>
+     <h3 id="result"></h3>
+     <!-- 이름, 합계, 평균, 합격여부 (60 이상이면 Pass, 아니면 Fail) -->
+     <!-- 입력한 성적의 점수값이 0~100 사이의 값이 아니면 alert창 띄워 안내 -->
+
+     <script>
+        function scoreCarc(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+
+            let sum = Number(kor) + Number(eng) + Number(math);
+            let avg = (sum/3).toFixed(1);
+            let pf = null;
+            if(avg>=60){
+                pf=' < < < 합격입니다 ^^ > > >';
+            }else{
+                pf='  < < 불합격입니다 ㅠㅠ > > >';
+            }
+            if(kor>100 || kor<0){
+                alert('잘못된 값이 입력되었습니다. 다시 입력하세요.');
+                location.reload();
+            }
+            if(eng>100 || eng<0){
+                alert('잘못된 값이 입력되었습니다. 다시 입력하세요.');
+                location.reload();
+            }
+            if(math>100 || math<0){
+                alert('잘못된 값이 입력되었습니다. 다시 입력하세요.');
+                location.reload();
+            }
+        
+            document.getElementById('result1').innerHTML =
+            `<li>점수 합계 ${sum} 점</li>
+             <li>점수 평균 ${avg} 점</li>`;
+            document.getElementById('result').innerText =
+            `${pf}`;
+        }
+
+     </script>
+</body>
+</html>

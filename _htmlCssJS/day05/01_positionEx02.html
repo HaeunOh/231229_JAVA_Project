@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out{
+            height: 150px;
+            background-color: beige;
+            position: relative;
+            
+        }
+        .out>div{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 25px
+        }
+        .in1{
+            background-color:coral;
+            left: 25px;
+        }
+        .in2{
+            background-color:yellowgreen;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .in3{
+            background-color:rgb(186, 186, 255);
+            right: 25px;
+        }
+        .outer{
+            width: 500px;
+            height: 500px;
+            background-color: plum;
+            position: relative;
+        }
+
+        .inner{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgb(248, 248, 132);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+          }
+    </style>
+</head>
+<body>
+    <div class="out">
+        <div class="in1"></div>
+        <div class="in2"></div>
+        <div class="in3"></div>
+    </div>
+    
+   <div class="outer">
+       <div class="inner"></div>
+   </div>
+    
+    
+    
+</body>
+</html>

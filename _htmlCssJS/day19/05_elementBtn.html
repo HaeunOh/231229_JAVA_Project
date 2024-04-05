@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <button type="button" id="btn1">엘리먼트 만들기</button>
+    <div id="area"></div>
+    </div>
+    <script>
+        const firstBtn = document.getElementById('btn1');
+        let area = document.getElementById('area');
+        
+        firstBtn.addEventListener('click', ()=>{
+            let btn2 = document.createElement('button');
+            btn2.setAttribute("id","btn2");
+            btn2.innerText =  '생성된 버튼';
+            area.appendChild(btn2);
+
+            const btn3 = document.querySelector('#btn2');
+             btn3.addEventListener('click', ()=>{
+                 let h2 = document.createElement('h2');
+                 h2.innerText = '생성된 버튼 클릭';
+                 area.appendChild(h2);
+             })
+        })
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 50px;
+            height: 50px;
+            margin: 3px;
+            border-radius: 35px;
+        }
+        h1{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button type="button" value="7">7</button>
+        <button type="button" value="8">8</button>
+        <button type="button" value="9">9</button>
+        <button type="button" value="+">+</button>
+        <button type="button" value="C">C</button><br>
+        <button type="button" value="4">4</button>
+        <button type="button" value="5">5</button>
+        <button type="button" value="6">6</button>
+        <button type="button" value="-">-</button> <br>
+        <button type="button" value="1">1</button>
+        <button type="button" value="2">2</button>
+        <button type="button" value="3">3</button>
+        <button type="button" value="*">*</button> <br>
+        <button type="button" value=".">.</button>
+        <button type="button" value="0">0</button>
+        <button type="button" value="=">=</button>
+        <button type="button" value="/">/</button>
+    </div>
+    <h1 id="printResult"></h1>
+    <script>
+        const printResult = document.getElementById('printResult');
+        let printValue = '';
+        
+        document.querySelector('.container').addEventListener('click', (e)=>{
+            let btnValue = e.target.value;
+            //숫자인지 아닌지 체크하는 
+            console.log(isNaN(btnValue));
+            if(!isNaN(btnValue)){ //숫자일 경우
+                 printValue += btnValue;
+            }else{ //숫자가 아니면
+                //숫자가 아닌 케이스 + - * / . = c undefined
+                if(btnValue!=undefined){
+                    switch(btnValue){
+                        case 'C' : 
+                            printValue = ''; //변수 안의 값을 초기화
+                            printResult.innerText = '';
+                            break;
+                        case '.' :
+                            printValue += btnValue;
+                            break;
+                        default:
+                            let result = '';
+                            if(btnValue == '='){
+                                //계산하기
+                                result = extraValue(printValue);
+                                printValue = result;
+
+                            }else{
+                                printValue += ` ${btnValue} `; //양옆에 공백
+                            }
+                            break;
+
+                    }
+                }
+
+            }
+
+            printResult.innerText = printValue;
+        })
+
+        function operation(f,o,l){
+            let result = 0;
+            switch(o){
+                case '+' : result = f+l; break;
+                case '*' : result = f*l; break;
+                case '-' : result = f-l; break;
+                case '/' : result = f/l; break;
+                default : break;
+            }
+            return result.toFixed(2);
+        }
+
+        function extraValue(strVal){
+            let firstNum = strVal.substring(0, strVal.indexOf(" "));
+            let lastNum = strVal.substring(strVal.lastIndexOf(" ")+1);
+            let op = strVal.substr(strVal.indexOf(" ")+1, 1);
+            return operation(Number(firstNum), op, Number(lastNum));
+        }
+        </script>
+</body>
+</html>

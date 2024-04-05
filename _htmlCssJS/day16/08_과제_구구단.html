@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        문제출제버튼 누르면 랜덤 문제 10개 출제
+        정답 입력 후 정답확인 버튼 누르면 채점됨
+
+        ans => 반복적으로 나타내기
+     -->
+     <h1>
+         <button type="button" id="showQ">문제 출제</button>
+     </h1>
+     <ol id="questionList"></ol>
+     <h1>
+         <button type="button" id="showA">정답 확인</button>
+     </h1>
+     <h3 id="printRatio"></h3>
+     <script>
+        //반복문
+        // ansObj[`ans${count}`] = dan * incre;
+       // userInput.style.backgroundColor = 'green';
+            ansObj = {};
+            let str = '';
+            let rAnswer = 0; //정답
+        document.getElementById('showQ').addEventListener('click', ()=>{
+            document.getElementById('questionList').innerHTML = null;
+            document.getElementById('printRatio').innerHTML = null;
+            let questionList = document.getElementById('questionList');
+            let dan = 0;
+            let incre = 0;
+            for(let cnt=1; cnt<=10; cnt++){
+                dan = Math.floor(Math.random()*9)+1;
+                incre = Math.floor(Math.random()*9)+1;
+                    ansObj[`ans${cnt}`] = dan * incre;
+                    str = `<li> ${dan} * ${incre} = <input type="text" id="user${cnt}"></input></li>`;
+                    questionList.innerHTML += str;
+                }
+           
+        })
+
+        document.getElementById('showA').addEventListener('click', ()=>{
+            rAnswer = 0;
+            for(let cnt=1; cnt<=10; cnt++){
+                let grading = document.getElementById(`user${cnt}`)
+            if(ansObj[`ans${cnt}`] == grading.value){
+                rAnswer++;
+                grading.value += `=> 정답!`;
+                grading.style.backgroundColor = "green";
+            }else{
+                grading.style.backgroundColor = "red";
+                grading.value += `=> 오답!`
+            }
+        }    
+        console.log(rAnswer);
+
+        document.getElementById('printRatio').innerHTML= `맞춘 문제 : ${rAnswer} 개 <br>
+        정답률 : ${rAnswer/10*100}%`;
+        
+    })
+     </script>
+</body>
+</html>

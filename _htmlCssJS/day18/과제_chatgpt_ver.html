@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 컴퓨터가 생성한 랜덤한 3자리 숫자 생성 함수
+function generateRandomNumber() {
+    let number = '';
+    while (number.length < 3) {
+        const digit = Math.floor(Math.random() * 10);
+        if (!number.includes(digit.toString())) {
+            number += digit.toString();
+        }
+    }
+    return number;
+}
+
+const targetNumber = generateRandomNumber(); // 컴퓨터가 생성한 숫자
+console.log("정답:", targetNumber); // 테스트용으로 정답 숫자 출력
+
+// 사용자 입력을 받아 게임을 진행하는 함수
+function playGame() {
+    const guess = prompt("세 자리 숫자를 입력하세요:");
+    if (!isValidGuess(guess)) {
+        alert("올바른 입력이 아닙니다. 세 자리 숫자를 입력해주세요.");
+        playGame();
+        return;
+    }
+    
+    const result = checkGuess(guess);
+    if (result.strike === 3) {
+        alert("정답을 맞추셨습니다! 축하합니다!");
+        return;
+    } else {
+        alert(`결과: ${result.strike} 스트라이크, ${result.ball} 볼, ${result.out} 아웃`);
+        playGame();
+    }
+}
+
+// 사용자 입력이 유효한지 확인하는 함수
+function isValidGuess(guess) {
+    return /^\d{3}$/.test(guess);
+}
+
+// 사용자의 추측을 평가하여 결과를 반환하는 함수
+function checkGuess(guess) {
+    let strike = 0;
+    let ball = 0;
+    let out = 0;
+    
+    for (let i = 0; i < 3; i++) {
+        const digit = guess[i];
+        if (digit === targetNumber[i]) {
+            strike++;
+        } else if (targetNumber.includes(digit)) {
+            ball++;
+        } else {
+            out++;
+        }
+    }
+    
+    return { strike, ball, out };
+}
+
+// 게임 시작
+playGame();
+
+    </script>
+</body>
+</html>

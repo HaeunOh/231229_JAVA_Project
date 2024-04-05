@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        body{
+            min-width: 680px;
+        }
+        legend{
+            background-color: rgb(110, 96, 79);
+            border-radius: 10px;
+            color: white;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+        }
+        fieldset{
+            width: 30%;
+            text-align: center;
+            background-color: rgb(110, 96, 79);
+            color: white;
+            border-radius: 10px;
+            border: none;
+        }
+        fieldset>input{
+            border-radius: 10px;
+        }
+        fieldset>button{
+            margin-top: 10px;
+            color: white;
+            background-color: rgba(246, 182, 103, 0.797);
+            border: none;
+            box-shadow: 2px 2px 2px rgb(45, 38, 24);
+            border-radius: 10px;
+        }
+        .ol{
+            list-style: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 과제 -->
+    <!-- 
+        성적확인
+        이름: input
+        국어: input
+        영어: input 
+        수학: input
+        [성적계산버튼]
+        ------------
+        ul > li 형태
+        이름: 홍길동
+        국어: 80
+        영어: 90
+        수학: 80
+        합계: ㅇㅇ
+        평균: ㅇㅇ 표시
+     -->
+     <h3 class="title">성적을 입력하세요</h3>
+     <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름  <input type="text" id="name"><br>
+            국어  <input type="text" id="kor"><br>
+            영어  <input type="text" id="eng"><br>
+            수학  <input type="text" id="math"><br>
+            <button type="button" onclick="scoreCarc()">성적계산</button>
+        </fieldset>
+     </form>
+     <ol id="result" class="ol"></ol>
+     <!-- let userid = document.getElementById('userid').value; -->
+     <script>
+        const result = document.getElementById('result');
+        function scoreCarc(){
+            let userName = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+            
+            let korVal = parseInt(kor);
+            let engVal = parseInt(eng);
+            let mathVal = parseInt(math);
+            let sum = korVal+engVal+mathVal;
+            let avg = sum/3;
+       
+            result.innerHTML = `${userName}님의 성적<br>
+            <li>국어: ${kor}점</li>
+            <li>영어: ${eng}점</li>
+            <li>수학: ${math}점</li>
+            <li>합계: ${sum}점</li>
+            <li>평균: ${avg}점</li>`
+        }
+     </script>
+</body>
+</html>

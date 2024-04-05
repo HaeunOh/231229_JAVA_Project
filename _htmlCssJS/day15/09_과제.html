@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set을 이용한 로또 만들기</title>
+</head>
+<body>
+    <!-- 
+        1~45까지 중복되지 않게 숫자 6개 랜덤 추출 => 출력
+        set 객체를 이용하여 생성
+     -->
+     <button id="ranLotto">랜덤번호 6자리 생성</button>
+     <h3 id="showRanNum"></h3>
+     <button id="bonusLotto">당첨번호 생성 + 보너스 번호 (1)</button>
+     <h3 id="showMyNum"></h3>
+     <button id="resultBtn">결과 확인</button>
+     <h3 id="showResult"></h3>
+     <script>
+        let showRanNum = document.getElementById('showRanNum');
+        let showMyNum = document.getElementById('showMyNum');
+        let showResult = document.getElementById('showResult');
+        function makeRanNum(num){
+           set = new Set();
+           while(set.size != num){
+                number = Math.floor(Math.random()*45)+1;
+                set.add(number);
+           }    
+           return set;
+        }
+        let lottoPack = [];
+        document.getElementById('ranLotto').addEventListener('click', ()=>{
+            let set = makeRanNum(6);
+            for(const r of set){
+                lottoPack.push(r);
+            }
+            console.log(set);
+            let str = '';
+            for(const tmp of set.values()){
+                str += tmp + ' ';
+            };
+            showRanNum.innerText = str;
+       })
+        let myLottoPack = [];
+        document.getElementById('bonusLotto').addEventListener('click', ()=>{
+           let set = makeRanNum(7);
+           for(const o of set){
+                myLottoPack.push(o);
+            }
+           console.log(set);
+           let str2 = '';
+            for(const tmp of set.values()){
+                str2 += tmp + ' ';
+            };
+            showMyNum.innerText = str2;
+        })
+
+        document.getElementById('resultBtn').addEventListener('click', ()=>{
+            let str3 = '';
+            let cnt = 0;
+            let bonusCnt = 0;
+            for(let i=0; i<myLottoPack.length; i++){
+               for(let j=0; j<lottoPack.length; j++){
+                    if(myLottoPack[i]==lottoPack[j]){
+                        cnt++;
+                    }
+               }
+            }
+            console.log(cnt);
+
+            switch(cnt){
+                case 6 : str3 = '6개 일치, 2등입니다!'; break;
+                case 5 : str3 = '5개 일치, 3등입니다!'; break;
+                case 4 : str3 = '4개 일치, 4등입니다!'; break;
+                case 3 : str3 = '3개 일치, 5등입니다!'; break;
+                case 2 : str3 = '2개 일치, 꽝입니다!'; break;
+                case 1 : str3 = '1개 일치, 꽝입니다!'; break;
+                case 0 : str3 = '일치하는 숫자 없음, 꽝입니다!'; break;
+            }
+            
+            showResult.innerText = str3;
+
+        })
+
+       
+     </script>
+</body>
+</html>

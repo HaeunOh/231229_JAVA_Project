@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>야구게임</h1>
+    <ul>
+        <li>
+            세자리의 숫자는 중복되면 안됨, 각 숫자는 자리수를 갖고 있음!
+        </li>
+        <li>
+            입력 숫자와 자리수 모두 일치하면 strike
+        </li>
+        <li>
+            자리수에 상관없이 숫자가 포함만 되어 있으면 ball
+        </li>
+        <li>
+            숫자가 전혀 없으면 out
+        </li>
+        <li>
+            3strike면 게임 종료
+        </li>
+    </ul>
+    <hr>
+    <button type="button" id="gameStart">게임시작</button>
+    <h1 id="status"></h1>
+    숫자 입력: <input type="text" id="input">
+    <button type="button" id="btn">게임 확인</button>
+    <ul id="result"></ul>
+    <script>
+    const comRan = new Set(); //컴퓨터가 정한 숫자 set
+    let comNum = [];
+    
+    document.getElementById('btn').addEventListener('click', compare);
+    document.getElementById('gameStart').addEventListener('click', makeGame);
+
+    // console.log(isNaN('abc'));
+    // console.log(isNaN('ㄱㄴㄷ'));
+    // console.log(isNaN('123'));
+    // console.log(isNaN(123));
+    
+    //게임시작 버튼 눌렀을 때 랜덤set 만들고 배열에 넣어주는 함수
+    //comNum & comRan 채워짐
+    function makeGame(){
+        //누적값 초기화
+        comNum=[];
+        comRan.clear();
+        document.getElementById('result').innerHTML = '';
+        do {
+            let rNum = Math.floor(Math.random()*9)+1;
+            comRan.add(rNum);
+        } while (comRan.size < 3);
+        console.log(comRan);
+        document.getElementById('status').innerText = '컴퓨터가 숫자를 결정했습니다.';
+        comRan.forEach((e)=>{
+            comNum.push(e);
+        })
+        console.log(comNum);
+    }
+
+    //입력값 유효검사
+    //1.입력값이 숫자인지 체크
+    //2.입력값이 3자리가 맞는지 체크
+    //3.3자리 숫자가 중복되는지 체크
+    function validCheck(input){
+        if(input.length !== 3){
+            return false;
+        }else if(isNaN(input)){
+            return false;
+        }else if(input.substring(0,1) == input.substring(0,1)){
+
+        }else{
+
+        }
+    }
+    let count=0;
+    function compare(){
+            count++;
+            let my = document.getElementById('input');
+
+            if(validCheck(my.value)){ //결과가 true라면...
+                console.log('valid 통과');
+                let myNum = my.value.split("");
+                console.log(myNum);
+
+                let strike = 0, ball = 0;
+
+                for(let i=0; i<comNums.length; i++){
+                    //컴숫자 기준으로
+                    for(let j=0; j<myNums.length; j++){
+                        //내숫자를 비교
+                        if(comNums[i] == myNums[j]){
+                            //컴의 숫자와 내 숫자가 같은 상황에서
+                            if(i==j){
+                                //자리수도 같다면... => strike
+                                strike++;
+                            }else{
+                                //자리수는 다르다면... => ball
+                                ball++;
+                            }
+                            break;
+                        }
+                    }
+                }
+
+                if(strike == 0 && ball == 0){
+                    document.getElementById('tries').innerHTML += `<li> OUT!! </li>`;
+                }else{
+                    if(strike == 3){
+                        document.getElementById('tries').innerHTML += `<li> ${myNums} => success!! </li>`;
+                    }else{
+                        document.getElementById('tries').innerHTML += 
+                        `<li>${myNums} => ${strike}Strike , ${ball}Ball</li>`;
+                    }
+                }
+            }else{ //결과가 false
+                console.log('valid 통과X');
+                document.getElementById('comMsg').innerText = `유효하지 않는 숫자입니다.`;
+            }
+            myNumElem.value="";
+            myNumElem.focus();
+        }
+
+        function makeGame(){
+            //기존 값 초기화
+            comNums=[]; 
+            comRan.clear();
+            document.getElementById('result').innerHTML="";
+            do{
+                let rNum = Math.floor(Math.random()*10);
+                comRan.add(rNum);
+            }while(comSet.size < 3);
+            console.log("comRan >> ",comRan);
+            document.getElementById('comMsg').innerText = `컴퓨터가 숫자를 결정했습니다.`;
+            //set을 배열로 저장
+            comSet.forEach((v)=>{
+                comNums.push(v);
+            });
+            console.log("comArr >> ",comNums);
+        }
+    </script>
+</body>
+</html>

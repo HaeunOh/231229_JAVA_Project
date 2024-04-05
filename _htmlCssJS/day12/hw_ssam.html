@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- 
+        성적확인
+        이름: input
+        국어: input
+        영어: input 
+        수학: input
+        [성적계산버튼]
+        ------------
+        ul > li 형태
+        이름: 홍길동
+        국어: 80
+        영어: 90
+        수학: 80
+        합계: ㅇㅇ
+        평균: ㅇㅇ 표시
+     -->
+     <form action="">
+        <fieldset>
+            <legend>성적확인</legend>
+            이름: <input type="text" id="name">
+            국어: <input type="text" id="kor">
+            영어: <input type="text" id="eng">
+            수학: <input type="text" id="math">
+            <button type="button" onclick="clickEvent()">성적계산</button>
+        </fieldset>
+     </form>
+     <ul id="ul"></ul>
+
+     <script>
+        function clickEvent(){
+            let name = document.getElementById('name').value;
+            let kor = document.getElementById('kor').value;
+            let eng = document.getElementById('eng').value;
+            let math = document.getElementById('math').value;
+
+            let sum = Number(kor)+Number(eng)+Number(math);
+            //let avg = math.round(sum/3); //정수로 반올림
+            let avg = (sum/3).toFixed(2); //정수로 반올림
+            //.toFixed(2) : 소수점 2자리까지 표현
+
+            let ul = document.getElementById('ul');
+
+            let str = `<li> 이름: ${name}</li>`;
+            str += `<li> 국어: ${kor}</li>`;
+            str += `<li> 영어: ${eng}</li>`;
+            str += `<li> 수학: ${math}</li>`;
+            str += `<li> 합계: ${sum}</li>`;
+            str += `<li> 평균: ${avg}</li>`;
+
+            ul.innerHTML = str;
+        }
+     </script>
+</body>
+</html>

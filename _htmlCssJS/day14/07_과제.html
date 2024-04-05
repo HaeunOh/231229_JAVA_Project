@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            min-width: 800px;
+        }
+        fieldset{
+            border: 1px dotted black;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.101);
+        }
+        header{
+            font-size: 80px;
+            text-align: center;
+        }
+        .box{
+            display: flex;
+            justify-content: space-around;
+        }
+        .si{
+            border: none;
+            background-color: white;            
+            width: 250px;
+            height: 250px;
+            background-image: url(../image/가위가위.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            border-radius: 10px;
+        }
+        .si:hover{
+            background-color: crimson;
+            box-shadow: 3px 3px rgb(97, 8, 26);
+            cursor: pointer;
+        }
+        .ro{
+            border: none;
+            background-color: white;   
+            width: 250px;
+            height: 250px;
+            background-image: url(../image/바위바위.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            border-radius: 10px;
+        }
+        .ro:hover{
+            background-color: greenyellow;
+            box-shadow: 3px 3px rgb(56, 83, 16);
+            cursor: pointer;
+        }
+        .pa{
+            border: none;
+            background-color: white;   
+            width: 250px;
+            height: 250px;
+            background-image: url(../image/보보.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 70%;
+            border-radius: 10px;
+
+        }
+        .pa:hover{
+            background-color: rgb(40, 40, 247);
+            box-shadow: 3px 3px rgb(16, 16, 88);
+            cursor: pointer;
+        }
+        .notice, .result{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+    <header>가위바위보 게임</header>
+    <div class="box">
+
+        <button class="si" type="button" onclick="rsp(1)"></button>
+        <button class="ro" type="button" onclick="rsp(2)" ></button>
+        <button class="pa" type="button" onclick="rsp(3)"></button>
+    </div>
+    </fieldset>
+
+    <h3 class="notice">가위/바위/보 중 하나를 누르세요!</h3>
+    <h2 class="result" id="result"></h2>
+
+    <script>
+        //랜덤수 출력 function
+        function ran(){
+            return Math.floor(Math.random()*3)+1;
+
+        }
+        //사용자 변수, 컴퓨터 변수, 승/패/무/승률 변수 선언
+        let me = 0;
+        let com = 0;
+        let win = 0;
+        let lose = 0;
+        let draw = 0;
+        let cnt = 0;
+        //결과창 불러오기
+        let result = document.getElementById('result');
+        
+        function rsp(me){
+            cnt++;
+            com = ran();
+            let printResult = null;
+            if(me==1 && com==2 || me==2 && com==3 || me==3 && com==1){
+                printResult='졌습니다.';
+                lose++;
+            }else if(me==1 && com==1 || me==2 && com==2 || me==3 && com==3){
+                printResult='비겼습니다.';
+                draw++;
+            }else{
+                printResult='이겼습니다.';
+                win++;
+            }
+            
+            let myPick = (me==1)? '가위' : (me==2)? '바위' : '보';
+            let comPick = (com==1)? '가위' : (com==2)? '바위' : '보';
+            let winPer = (win/cnt)*100;
+            let printWinPer = winPer.toFixed(2);
+
+            result.innerHTML = 
+            `나 : ${myPick} / 컴퓨터 : ${comPick} <br>
+            ${printResult} <br>
+            - - - - - -  승률 계산기 - - - - - - <br>
+            승 : ${win} / 무 : ${draw} / 패 : ${lose} <br>
+            승률 : ${printWinPer}`;
+            
+
+        }
+
+
+
+    </script>
+</body>
+</html>

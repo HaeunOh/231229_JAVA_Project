@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        input 2개 생성 -> 과목, 점수 입력받기
+        - map에 추가
+        map 출력 => ul>li 형태로
+        결과 : 합계/평균/합격여부(평균 60 이상 합격) 출력
+     -->
+     <input type="text" id="subject" placeholder="과목명"><br>
+     <input type="text" id="score" placeholder="점수"><br>
+     <button type="button" id="addBtn">추가</button>
+     <button type="button" id="resultBtn">결과 확인</button>
+     <ul id="addList"></ul>
+     <h3 id="result"></h3>
+     <script>
+        const subScore = new Map();
+        let sum = 0;
+        let cnt = 0;
+        let str = '';
+        let addList = document.getElementById('addList');
+        let result = document.getElementById('result');
+        document.getElementById('addBtn').addEventListener('click', ()=>{
+            cnt++;
+            let subject = document.getElementById('subject').value;
+            let score = Number(document.getElementById('score').value);
+            sum += score;
+            subScore.set(subject,score);
+            console.log(subScore);
+            str += `<li>과목명: ${subject} / 점수: ${score}점</li>`
+            addList.innerHTML = str;
+        })
+        let str2 = '';
+        document.getElementById('resultBtn').addEventListener('click', ()=>{
+            let avg = (sum/cnt).toFixed(2);
+            let getRe = (avg>=60)? '합격' : '불합격';
+            str2 += `점수 합계 : ${sum} 점 <br> 
+                    점수 평균 : ${avg} 점 <br>
+                    최종 결과 '${getRe}' 입니다.`
+            result.innerHTML = str2;
+        })
+        
+     </script>
+</body>
+</html>

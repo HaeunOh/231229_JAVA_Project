@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        이름 : 인풋
+        주민번호 : 인풋
+        확인버튼
+        으로 이름과 주민번호를 입력받고,
+        이름: ㅇㅇㅇ
+        생년월일: ㅇㅇㅇ
+        나이: ㅇㅇ
+        성별: ㅇ
+        화면에 띄우기
+     -->
+     <form action="">
+        이름 <input type="text" id="name"> <br>
+        주민번호 <input type="text" id="rNum"> <br>
+        <Button type="button" onclick="check()">확인</Button>
+     </form>
+     <ul id="ul"></ul>
+     
+     <script>
+        function check(){
+            let ul = document.getElementById('ul');
+            let name = document.getElementById('name').value;
+            let rNum= document.getElementById('rNum').value;
+
+            let today = new Date();
+            let year = today.getFullYear();
+            //생년월일추출
+            let birth = rNum.slice(0,rNum.indexOf("-"));
+            //성별체크
+            let genderNum = rNum.charAt(rNum.indexOf('-')+1);
+            let gender = ((genderNum==='1' || genderNum==='3')? '남':'여');
+            //나이추출
+            let juminyear = null;
+            let birthYear = birth.slice(0,2);
+            if(rNum.charAt(rNum.indexOf('-')+1)==1 || rNum.charAt(rNum.indexOf('-')+1)==2){
+                juminyear = '19' + birthYear;
+            }else{
+                juminyear = '20' + birthYear;
+            };
+            console.log(juminyear);
+            let age = Number(year)-Number(juminyear);
+          
+            ul.innerHTML = `<li> 이름 : ${name}</li>
+            <li> 생년월일 : ${birth}</li>
+            <li> 나이 : ${age}</li>
+            <li> 성별 : ${gender}</li>`;
+            
+        }
+     </script>
+</body>
+</html>
